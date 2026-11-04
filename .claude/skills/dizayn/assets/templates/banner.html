@@ -1,0 +1,20 @@
+<!-- Banner/e'lon: sarlavha + taklif + sana + CTA tugma + o'ngda rasm (masterklass, aksiya, xizmat) -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="{{ASSETS}}/base.css">
+<style>
+body{background:{{bg|#0E0E10}};color:#F4F1EA}
+.canvas{display:grid;grid-template-columns:1.15fr .85fr;gap:4vw;align-items:center}
+.tag{color:var(--accent);font-weight:800;letter-spacing:.2em;text-transform:uppercase;font-size:1.3vw}
+h1{font-family:var(--display);font-weight:800;font-size:{{title_size|5vw}};line-height:1.02;margin:2.4vh 0;letter-spacing:-.02em}
+p{font-size:1.6vw;line-height:1.45;opacity:.8;max-width:92%}
+.meta{display:flex;gap:2.4vw;margin-top:4vh;font-size:1.4vw;font-weight:700}
+.meta div{border-left:3px solid var(--accent);padding-left:1vw}
+.meta small{display:block;font-weight:500;opacity:.6;font-size:1.05vw;text-transform:uppercase;letter-spacing:.1em}
+.btn{display:inline-block;margin-top:5vh;background:var(--accent);color:var(--ink);font-weight:800;font-size:1.5vw;padding:2.2vh 2.6vw;border-radius:999px}
+.pic{position:relative;height:100%;border-radius:2vw;overflow:hidden;background:#1d1d20}
+.pic img{width:100%;height:100%;object-fit:cover;object-position:{{focus|50% 30%}}}
+</style></head><body><div class="canvas grain">
+<div><div class="tag">{{tag|Masterklass}}</div><h1>{{title|Sarlavha}}</h1><p>{{sub|}}</p>
+<div class="meta"><div><small>{{m1_lbl|Sana}}</small>{{m1|—}}</div><div><small>{{m2_lbl|Joy}}</small>{{m2|—}}</div><div><small>{{m3_lbl|Narx}}</small>{{m3|—}}</div></div>
+<span class="btn">{{cta|Ro'yxatdan o'tish →}}</span></div>
+<div class="pic"><img src="{{image}}" onerror="this.remove()"></div>
+</div></body></html>

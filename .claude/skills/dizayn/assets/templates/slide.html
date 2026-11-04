@@ -1,0 +1,17 @@
+<!-- Karusel slaydi: raqam N/TOTAL + sarlavha + matn (carousel buyrug'i N va TOTAL ni o'zi qo'yadi) -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="{{ASSETS}}/base.css">
+<style>
+body{background:{{bg|#F4F1EA}};color:{{fg|#0E0E10}}}
+.canvas{display:flex;flex-direction:column}
+.n{font-family:var(--display);font-weight:800;font-size:3vw;display:flex;justify-content:space-between;opacity:.9}
+.n span:last-child{opacity:.45}
+.big{font-family:var(--display);font-weight:900;font-size:22vw;line-height:.85;color:var(--accent);margin-top:auto}
+h2{font-family:var(--display);font-weight:800;font-size:{{title_size|6.6vw}};line-height:1.08;margin-top:2vh}
+p{font-size:3.4vw;line-height:1.45;margin-top:3vh;opacity:.8}
+.foot{margin-top:auto;padding-top:4vh;display:flex;justify-content:space-between;font-size:2.3vw;font-weight:700;opacity:.6}
+</style></head><body><div class="canvas">
+<div class="n"><span>{{handle|@akobir}}</span><span>{{N|1}}/{{TOTAL|1}}</span></div>
+<div class="big">{{big|}}</div>
+<h2>{{title|Slayd sarlavhasi}}</h2><p>{{body|}}</p>
+<div class="foot"><span>{{left|Bovari Agency}}</span><span>{{right|Keyingisi →}}</span></div>
+</div></body></html>

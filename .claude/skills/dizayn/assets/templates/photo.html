@@ -1,0 +1,17 @@
+<!-- Fotoli post: to'liq kadr + gradient + sarlavha (wedding, keys, production) -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="{{ASSETS}}/base.css">
+<style>
+body{background:#000;color:#fff}
+.canvas{display:flex;flex-direction:column;justify-content:flex-end}
+.cover{object-position:{{focus|50% 30%}}}
+.shade{background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.2) 50%,rgba(0,0,0,.9) 100%)}
+.top{position:absolute;top:var(--pad);left:var(--pad);right:var(--pad);display:flex;justify-content:space-between;font-weight:700;font-size:2.3vw;letter-spacing:.16em;text-transform:uppercase}
+.txt{position:relative}
+.script{font-family:var(--script);font-size:7vw;color:var(--accent);line-height:1}
+h1{font-family:{{font|var(--serif)}};font-weight:700;font-size:{{title_size|7.6vw}};line-height:1.05}
+p{margin-top:2.4vh;font-size:3.1vw;line-height:1.4;opacity:.85;max-width:90%}
+</style></head><body><div class="canvas grain">
+<img class="cover" src="{{image}}"><div class="shade"></div>
+<div class="top"><span>{{tag|Wedding business}}</span><span>{{handle|@akobir}}</span></div>
+<div class="txt"><div class="script">{{script|}}</div><h1>{{title|Sarlavha}}</h1><p>{{sub|}}</p></div>
+</div></body></html>

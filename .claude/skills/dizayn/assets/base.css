@@ -1,0 +1,41 @@
+/* Bovari dizayn bazasi: shriftlar + brend tokenlari.
+   HTML ichida: <link rel="stylesheet" href="{{BASE_CSS}}"> (render paytida yo'l qo'yiladi). */
+@font-face { font-family: "Montserrat"; src: url("../fonts/Montserrat.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/Montserrat-Italic.ttf"); font-weight: 100 900; font-style: italic; }
+@font-face { font-family: "Unbounded"; src: url("../fonts/Unbounded.ttf"); font-weight: 200 900; }
+@font-face { font-family: "Manrope"; src: url("../fonts/Manrope.ttf"); font-weight: 200 800; }
+@font-face { font-family: "Golos Text"; src: url("../fonts/GolosText.ttf"); font-weight: 400 900; }
+@font-face { font-family: "Playfair Display"; src: url("../fonts/PlayfairDisplay.ttf"); font-weight: 400 900; }
+@font-face { font-family: "Playfair Display"; src: url("../fonts/PlayfairDisplay-Italic.ttf"); font-weight: 400 900; font-style: italic; }
+@font-face { font-family: "Cormorant Garamond"; src: url("../fonts/CormorantGaramond.ttf"); font-weight: 300 700; }
+@font-face { font-family: "Cormorant Garamond"; src: url("../fonts/CormorantGaramond-Italic.ttf"); font-weight: 300 700; font-style: italic; }
+@font-face { font-family: "DM Serif Display"; src: url("../fonts/DMSerifDisplay.ttf"); }
+@font-face { font-family: "Bebas Neue"; src: url("../fonts/BebasNeue.ttf"); }
+@font-face { font-family: "Oswald"; src: url("../fonts/Oswald.ttf"); font-weight: 200 700; }
+@font-face { font-family: "Great Vibes"; src: url("../fonts/GreatVibes.ttf"); }
+
+:root {
+  /* Brend ranglari — Bovari brendbuki tasdiqlangach shu yerda almashtiriladi */
+  --ink: #0E0E10;
+  --paper: #F4F1EA;
+  --accent: #E8B44A;     /* oltin — premium/wedding */
+  --accent-2: #D9472B;   /* qizil — urg'u, raqam, ogohlantirish */
+  --muted: #8A8578;
+  --display: "Unbounded", "Montserrat", sans-serif;
+  --text: "Manrope", "Inter", sans-serif;
+  --serif: "Playfair Display", serif;
+  --script: "Great Vibes", cursive;
+  --pad: 88px;           /* xavfsiz chekka (1080 kenglikda) */
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; }
+body { background: var(--paper); color: var(--ink); font-family: var(--text);
+       -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision; overflow: hidden; }
+.canvas { position: relative; width: 100vw; height: 100vh; padding: var(--pad); overflow: hidden; }
+.hl { color: var(--accent); }
+.hl2 { color: var(--accent-2); }
+.mark { background: var(--accent); color: var(--ink); padding: 0 .18em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.cover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(0,0,0,.85) 100%); }
+.grain::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .08;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
