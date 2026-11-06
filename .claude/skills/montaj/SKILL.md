@@ -48,6 +48,12 @@ python3 $M <buyruq> --help
 - Subtitr ekranning pastki 1/3 qismida, interfeys tugmalari ostida qolmasin (`--margin 70+`).
 - Gapiruvchi kadrda `reels --mode crop`, gorizontal/keng kadrda `--mode blur`.
 
+## Uslublar kutubxonasi
+
+Akobir yuborgan referens videolar tahlili: `references/uslublar.md`.
+Ijodiy taklif yoki montaj rejasi tuzishdan oldin shu faylni o'qi va mos usulni taklif qil.
+Yangi referens kelsa, tahlilini shu faylga qo'sh (vaqt jadvali, usullar, ovoz, qo'llash).
+
 ## Cheklovlar
 
 - Bulut sessiyasida HuggingFace yopiq bo'lishi mumkin → `transcribe` ishlamaydi.
