@@ -8,7 +8,8 @@ Buyruqlar:
   make TEMPLATE out.png [--format post] [--set key=qiymat ...]
   render in.html out.png [--format post | --size 1080x1350] [--scale 1]
   carousel dir_or_html... outdir [--format post]  — bir nechta HTML -> 01.png, 02.png...
-  icon NAME out.svg [--set lucide|tabler] [--color #fff] [--stroke 2] [--size 96]
+  icon NAME out.svg [--set lucide|tabler|tabler-filled|brand] [--color #fff] [--stroke 2] [--size 96]
+                                  brand = simple-icons (instagram, telegram, whatsapp, youtube, tiktok...)
   cutout in.jpg out.png [--model isnet-general-use|u2net_human_seg|u2netp]
   palette in.jpg [--n 6]          — rasmdan rang palitrasi
   sheet out.jpg a.png b.png ...   — preview to'ri (ko'z bilan tekshirish uchun)
@@ -27,6 +28,7 @@ RENDER_JS = Path(__file__).resolve().parent / "render.js"
 FORMATS = {
     "post":      (1080, 1350, "Instagram feed 4:5 (asosiy)"),
     "square":    (1080, 1080, "Instagram/Facebook 1:1"),
+    "post34":    (1080, 1440, "Instagram 3:4 (profil to'ri formati)"),
     "story":     (1080, 1920, "Stories / Reels cover 9:16"),
     "reels-cover": (1080, 1920, "Reels cover (markaziy 1080x1440 grid'da ko'rinadi)"),
     "telegram":  (1280, 720,  "Telegram post rasmi 16:9"),
@@ -42,6 +44,7 @@ ICON_SETS = {
     "lucide": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/{n}.svg",
     "tabler": "https://raw.githubusercontent.com/tabler/tabler-icons/main/icons/outline/{n}.svg",
     "tabler-filled": "https://raw.githubusercontent.com/tabler/tabler-icons/main/icons/filled/{n}.svg",
+    "brand": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/{n}.svg",
 }
 
 
@@ -140,6 +143,8 @@ def cmd_icon(a):
         except Exception as e:
             sys.exit(f"Ikonka topilmadi: {a.name} ({a.set}) — {e}. Nomlar: lucide.dev/icons, tabler.io/icons")
     svg = cache.read_text()
+    if a.set == "brand" and "width=" not in svg:
+        svg = svg.replace("<svg ", f'<svg width="96" height="96" fill="currentColor" ', 1)
     svg = re.sub(r'width="\d+"', f'width="{a.size}"', svg, count=1)
     svg = re.sub(r'height="\d+"', f'height="{a.size}"', svg, count=1)
     svg = svg.replace("currentColor", a.color)

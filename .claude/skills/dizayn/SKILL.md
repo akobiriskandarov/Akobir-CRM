@@ -1,6 +1,6 @@
 ---
 name: dizayn
-description: Grafik dizayn — Instagram postlar (4:5, 1:1), Stories, Reels cover, karusellar, bannerlar, Telegram/YouTube rasmlari, masterklass e'lonlari, keys/natija postlari. HTML/CSS + Playwright orqali PNG/JPG/PDF render, 13 ta brend shrift, Lucide/Tabler ikonlar, fonni olib tashlash (rembg), rasmdan palitra. "post qil", "banner yasa", "karusel", "dizayn", "obloshka", "e'lon rasmi" deganda ishlatiladi.
+description: Grafik va ijtimoiy tarmoq dizayni — Instagram postlar (4:5, 3:4, 1:1), Reels/Stories muqovalari (obloshka), target reklama kreativlari, karusellar, bannerlar, Highlights, Telegram/YouTube rasmlari. HTML/SVG + Playwright render, 40 ta shrift (lotin/kirill/kanji), Lucide/Tabler/brend ikonlar, fon olib tashlash (rembg), AI sifat oshirish (EDSR), belgi tozalash, profil to'ri va xavfsiz zona tekshiruvi, qatlamli PSD/SVG/PDF eksport. "post qil", "muqova", "obloshka", "banner", "reklama kreativi", "karusel", "dizayn", "PSD qilib ber" deganda ishlatiladi.
 ---
 
 # Dizayn (Bovari Agency)
@@ -10,6 +10,23 @@ D=.claude/skills/dizayn/scripts/dizayn.py
 bash .claude/skills/dizayn/scripts/setup.sh   # yangi sessiyada 1 marta (shrift + rembg)
 python3 $D --help
 ```
+
+## Avval o'qing
+- `references/instagram.md` — o'lchamlar, xavfsiz zonalar, muqova va reklama qoidalari, topshirish formatlari.
+- `references/shriftlar.md` — qaysi shriftda kirill, oʻ, kanji bor (Bebas'da kirill YO'Q).
+
+## Ijtimoiy tarmoq buyruqlari (`scripts/social.py`)
+
+```bash
+S=.claude/skills/dizayn/scripts/social.py
+python3 $S cover foto.jpg out.png --hook "1-QATOR|2-QATOR" --hl 1 --sub "IZOH" --brand HIKARI --mark 光 [--offset 180] [--format story|post|post34] [--all]
+python3 $S export dizayn.svg outdir --psd --pdf     # <g id> qatlamlari -> PSD qatlamlari
+python3 $S clean skrin.png toza.png --auto-icon     # play/karusel belgisini o'chirish; --box x,y,w,h
+python3 $S upscale toza.png katta.png --model edsr --sharpen   # x4; espcn = tez, edsr = sifat (~60 s)
+python3 $S grid grid.jpg 1.png 2.png 3.png          # profil to'ri (3:4) qanday ko'rinadi
+python3 $S safezone out.png check.jpg --ui reels|story|ads   # interfeys yopadigan joylar
+```
+`dizayn.py icon instagram i.svg --set brand` — brend ikonlari (simple-icons).
 
 ## Ish tartibi
 
@@ -49,8 +66,7 @@ python3 $D --help
 
 - **1 post = 1 fikr.** Sarlavha ≤ 10 so'z, telefonda 1 soniyada o'qilsin.
 - Iyerarxiya: sarlavha → urg'u so'z (rang) → izoh → imzo/CTA. 3 tadan ko'p shrift o'lchami ishlatma.
-- Shrift juftliklari: `Unbounded + Manrope` (ekspert/biznes), `Playfair/Cormorant + Great Vibes` (wedding),
-  `Bebas Neue/Oswald + Manrope` (aksiya, dinamik). Script shriftni faqat 1–2 so'zga.
+- Shrift juftliklari va harf qo'llab-quvvatlashi: `references/shriftlar.md`. Script shriftni faqat 1–2 so'zga.
 - Ranglar `assets/base.css` `:root` da — brendbuk tasdiqlangach shu yerda almashtiriladi.
 - Matn foto ustida bo'lsa — gradient/`shade`; kontrast WCAG AA (4.5:1) dan kam bo'lmasin.
 - Story/Reels cover: yuqori 250px va pastki 300px ga muhim matn qo'yma (interfeys yopadi).
@@ -59,7 +75,8 @@ python3 $D --help
 
 ## Cheklovlar
 
-- AI rasm generatsiyasi yo'q — fotolar foydalanuvchidan; abstrakt fonlarni CSS/SVG bilan chiz.
+- Fotolar: avval mijozning o'zidan. AI rasm: ElevenLabs `creative_generate_image` (kredit sarflaydi, bepul rejada kunlik limit bor) — real mahsulot o'rniga emas, faqat atmosfera/test uchun.
+- Stok saytlar (Unsplash, Pexels, Wikimedia) bu muhitda yopiq; GitHub ochiq.
 - Yangi shrift: `raw.githubusercontent.com/google/fonts/main/ofl/<nom>/` dan `fonts/` ga yukla va
   `base.css` ga `@font-face` qo'sh (faqat OFL litsenziyali).
 - Real brendlar (logotip, nom) mijoz ruxsatisiz ishlatilmaydi; tayyor fayllar repo'ga commit qilinmaydi.
